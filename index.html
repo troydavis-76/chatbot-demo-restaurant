@@ -3,478 +3,712 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saveurs du Quartier — Restaurant & Snack</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Le Comptoir du Soleil — Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
     --cream: #F5F0E8;
-    --dark: #1A1208;
-    --gold: #C8923A;
-    --rust: #9B4A1F;
-    --warm: #E8D5B0;
-    --text: #2C1F0E;
+    --warm-white: #FDFAF4;
+    --charcoal: #1C1C1A;
+    --gold: #C8963E;
+    --gold-light: #E8B96A;
+    --terracotta: #C4623A;
+    --sage: #7A8C6E;
+    --shadow: rgba(28,28,26,0.12);
   }
 
-  html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--dark);
-    color: var(--cream);
     font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.5rem 4rem;
-    background: linear-gradient(to bottom, rgba(26,18,8,0.95), transparent);
-    backdrop-filter: blur(2px);
-  }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; font-weight: 700;
-    color: var(--gold); letter-spacing: 0.05em;
-  }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    color: var(--cream); text-decoration: none;
-    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; opacity: 0.8;
-    transition: opacity 0.3s, color 0.3s;
-  }
-  .nav-links a:hover { opacity: 1; color: var(--gold); }
-
-  /* HERO */
-  .hero {
+    background: var(--cream);
+    color: var(--charcoal);
     min-height: 100vh;
-    display: grid; place-items: center;
-    position: relative; overflow: hidden;
-    padding: 6rem 2rem 4rem;
   }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(200,146,58,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 50% at 20% 80%, rgba(155,74,31,0.2) 0%, transparent 50%),
-      var(--dark);
+
+  /* ── RESTAURANT PAGE ── */
+  header {
+    background: var(--charcoal);
+    padding: 18px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  .hero-grain {
-    position: absolute; inset: 0; opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    background-size: 200px;
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
   }
-  .hero-content {
-    position: relative; text-align: center; max-width: 900px;
+  nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin-left: 28px;
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
   }
-  .hero-badge {
+  nav a:hover { color: var(--gold-light); }
+
+  .hero {
+    background: var(--charcoal);
+    padding: 80px 48px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,62,0.15), transparent 70%);
+  }
+  .hero-tag {
     display: inline-block;
-    border: 1px solid rgba(200,146,58,0.4);
-    color: var(--gold); font-size: 0.75rem;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    padding: 0.5rem 1.5rem; border-radius: 100px;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.8s ease both;
+    background: var(--terracotta);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 24px;
   }
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 900; line-height: 1;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease 0.15s both;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--warm-white);
+    line-height: 1.15;
+    max-width: 600px;
+    margin-bottom: 20px;
   }
-  .hero h1 em {
-    font-style: italic; color: var(--gold);
-    display: block;
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero p {
+    color: #aaa;
+    font-size: 1rem;
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    font-weight: 300;
   }
-  .hero-sub {
-    font-size: 1.1rem; opacity: 0.65; max-width: 500px;
-    margin: 0 auto 3rem; line-height: 1.7;
-    animation: fadeUp 0.8s ease 0.3s both;
-  }
-  .hero-cta {
-    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.45s both;
-  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn-primary {
-    background: var(--gold); color: var(--dark);
-    padding: 1rem 2.5rem; border-radius: 100px;
-    font-weight: 700; font-size: 0.9rem;
-    letter-spacing: 0.05em; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: inline-block;
+    background: var(--gold);
+    color: var(--charcoal);
+    border: none;
+    padding: 13px 28px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
   }
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(200,146,58,0.4);
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--warm-white);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 13px 28px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s;
   }
-  .btn-secondary {
-    border: 1px solid rgba(245,240,232,0.3);
-    color: var(--cream); padding: 1rem 2.5rem;
-    border-radius: 100px; font-weight: 500;
-    font-size: 0.9rem; text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    display: inline-block;
-  }
-  .btn-secondary:hover {
-    border-color: var(--gold);
-    background: rgba(200,146,58,0.1);
-  }
-  .hero-scroll {
-    position: absolute; bottom: 2.5rem; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center;
-    gap: 0.5rem; opacity: 0.4;
-    animation: fadeUp 1s ease 0.8s both;
-  }
-  .hero-scroll span { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; }
-  .scroll-line {
-    width: 1px; height: 40px;
-    background: linear-gradient(to bottom, var(--cream), transparent);
-    animation: scrollPulse 2s ease infinite;
-  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* STATS */
-  .stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid rgba(245,240,232,0.1);
-    border-bottom: 1px solid rgba(245,240,232,0.1);
+  .info-bar {
+    background: var(--gold);
+    padding: 14px 48px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
   }
-  .stat {
-    padding: 3rem 2rem; text-align: center;
-    border-right: 1px solid rgba(245,240,232,0.1);
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .stat:last-child { border-right: none; }
-  .stat.visible { opacity: 1; transform: translateY(0); }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem; font-weight: 900; color: var(--gold);
-    display: block; line-height: 1;
-  }
-  .stat-label { font-size: 0.8rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; }
+  .info-item { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--charcoal); font-weight: 500; }
+  .info-item span { font-size: 1rem; }
 
-  /* MENU */
-  .section { padding: 8rem 4rem; max-width: 1200px; margin: 0 auto; }
-  .section-label {
-    display: inline-block;
-    color: var(--gold); font-size: 0.75rem;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    margin-bottom: 1rem;
+  .section {
+    padding: 72px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
-  .section-title {
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .section h2 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 700; line-height: 1.1;
-    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    line-height: 1.2;
   }
-  .section-sub { opacity: 0.55; max-width: 500px; line-height: 1.7; margin-bottom: 4rem; }
 
   .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5px;
-    background: rgba(245,240,232,0.08);
-    border: 1px solid rgba(245,240,232,0.08);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
   }
   .menu-card {
-    background: var(--dark); padding: 2.5rem;
-    position: relative; overflow: hidden;
-    transition: background 0.3s;
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease, background 0.3s;
+    background: var(--warm-white);
+    border-radius: 8px;
+    padding: 28px;
+    border-left: 3px solid var(--gold);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  .menu-card.visible { opacity: 1; transform: translateY(0); }
-  .menu-card:hover { background: rgba(200,146,58,0.06); }
-  .menu-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(to right, var(--gold), transparent);
-    opacity: 0; transition: opacity 0.3s;
-  }
-  .menu-card:hover::before { opacity: 1; }
-  .menu-emoji { font-size: 2rem; margin-bottom: 1rem; display: block; }
-  .menu-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;
-  }
-  .menu-desc { font-size: 0.9rem; opacity: 0.5; line-height: 1.6; margin-bottom: 1.5rem; }
-  .menu-price {
-    color: var(--gold); font-weight: 700;
-    font-size: 1.1rem;
-  }
+  .menu-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px var(--shadow); }
+  .menu-card .category { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage); margin-bottom: 8px; }
+  .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 8px; }
+  .menu-card p { font-size: 0.85rem; color: #666; line-height: 1.6; margin-bottom: 16px; font-weight: 300; }
+  .menu-card .price { font-size: 1.1rem; color: var(--gold); font-weight: 500; }
 
-  /* AMBIANCE */
-  .ambiance-section {
-    padding: 8rem 4rem;
-    background: linear-gradient(135deg, rgba(200,146,58,0.08) 0%, transparent 60%);
-    border-top: 1px solid rgba(245,240,232,0.08);
-    border-bottom: 1px solid rgba(245,240,232,0.08);
-  }
-  .ambiance-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-  }
-  .ambiance-visual {
-    aspect-ratio: 4/5;
-    background: linear-gradient(135deg, rgba(200,146,58,0.2), rgba(155,74,31,0.1));
-    border: 1px solid rgba(200,146,58,0.2);
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 6rem; position: relative; overflow: hidden;
-  }
-  .ambiance-visual::after {
-    content: '';
-    position: absolute; inset: 0;
-    background: linear-gradient(to top right, rgba(200,146,58,0.1), transparent);
-  }
-  .ambiance-features { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
-  .feature {
-    display: flex; gap: 1.5rem; align-items: flex-start;
-    opacity: 0; transform: translateX(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .feature.visible { opacity: 1; transform: translateX(0); }
-  .feature-icon {
-    width: 40px; height: 40px; border-radius: 8px;
-    background: rgba(200,146,58,0.15);
-    border: 1px solid rgba(200,146,58,0.3);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; flex-shrink: 0;
-  }
-  .feature-title { font-weight: 600; margin-bottom: 0.3rem; }
-  .feature-desc { font-size: 0.85rem; opacity: 0.5; line-height: 1.6; }
-
-  /* CONTACT */
-  .contact-section {
-    padding: 8rem 4rem;
-    text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .contact-section::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(200,146,58,0.1), transparent);
-  }
-  .contact-inner { position: relative; max-width: 600px; margin: 0 auto; }
-  .contact-info { display: flex; flex-direction: column; gap: 1rem; margin: 3rem 0; }
-  .contact-item {
-    display: flex; align-items: center; justify-content: center;
-    gap: 1rem; opacity: 0.7; font-size: 0.95rem;
-  }
-  .contact-item span:first-child { color: var(--gold); font-size: 1.1rem; }
-
-  /* FOOTER */
   footer {
-    border-top: 1px solid rgba(245,240,232,0.08);
-    padding: 2rem 4rem;
-    display: flex; justify-content: space-between; align-items: center;
-    opacity: 0.4; font-size: 0.8rem;
+    background: var(--charcoal);
+    color: #888;
+    text-align: center;
+    padding: 28px;
+    font-size: 0.8rem;
+    font-weight: 300;
   }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
+  /* ── DEMO BADGE ── */
+  .demo-badge {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--terracotta);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    z-index: 9999;
+    box-shadow: 0 4px 16px rgba(196,98,58,0.4);
+    animation: fadeInDown 0.5s ease;
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  /* ── CHAT WIDGET ── */
+  #chat-widget {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  #chat-box {
+    width: 360px;
+    height: 520px;
+    background: var(--warm-white);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.18), 0 4px 16px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  #chat-box.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+  }
+
+  .chat-header {
+    background: var(--charcoal);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .chat-avatar {
+    width: 38px; height: 38px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .chat-header-info { flex: 1; }
+  .chat-header-name { color: var(--warm-white); font-weight: 500; font-size: 0.9rem; }
+  .chat-header-status { color: var(--sage); font-size: 0.75rem; display: flex; align-items: center; gap: 5px; }
+  .dot-online { width: 7px; height: 7px; background: #6BCB77; border-radius: 50%; }
+  .chat-close {
+    background: none; border: none; color: #aaa; font-size: 1.2rem; cursor: pointer;
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .chat-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: #ddd; border-radius: 2px; }
+
+  .msg {
+    display: flex;
+    gap: 8px;
+    animation: msgIn 0.3s ease;
+  }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 1; transform: scaleY(1); }
-    50% { opacity: 0.3; transform: scaleY(0.7); }
+  .msg.user { flex-direction: row-reverse; }
+  .msg-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; color: var(--charcoal); font-weight: 600;
+    flex-shrink: 0; align-self: flex-end;
+  }
+  .msg.user .msg-avatar { background: var(--terracotta); color: #fff; }
+  .msg-bubble {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    font-weight: 300;
+  }
+  .msg.bot .msg-bubble {
+    background: #fff;
+    color: var(--charcoal);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 4px var(--shadow);
+  }
+  .msg.user .msg-bubble {
+    background: var(--charcoal);
+    color: #f0ece4;
+    border-bottom-right-radius: 4px;
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    .section { padding: 5rem 1.5rem; }
-    .stats { grid-template-columns: 1fr; }
-    .stat { border-right: none; border-bottom: 1px solid rgba(245,240,232,0.1); }
-    .ambiance-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .ambiance-section { padding: 5rem 1.5rem; }
-    .contact-section { padding: 5rem 1.5rem; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  .typing-indicator {
+    display: flex; gap: 4px; padding: 12px 14px;
+    background: #fff; border-radius: 14px; border-bottom-left-radius: 4px;
+    box-shadow: 0 1px 4px var(--shadow);
+    width: fit-content;
   }
+  .typing-indicator span {
+    width: 7px; height: 7px;
+    background: #bbb; border-radius: 50%;
+    animation: bounce 1.2s infinite;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-6px); background: var(--gold); }
+  }
+
+  .quick-replies {
+    padding: 0 16px 12px;
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .quick-reply {
+    background: #fff;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .quick-reply:hover { background: var(--gold); color: #fff; }
+
+  .chat-input-area {
+    padding: 12px 16px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: #fff;
+  }
+  #chat-input {
+    flex: 1;
+    border: 1.5px solid #e8e0d0;
+    border-radius: 22px;
+    padding: 9px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.86rem;
+    outline: none;
+    background: var(--warm-white);
+    transition: border-color 0.2s;
+    color: var(--charcoal);
+  }
+  #chat-input:focus { border-color: var(--gold); }
+  #chat-send {
+    width: 38px; height: 38px;
+    background: var(--gold);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--charcoal);
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+  #chat-send:hover { background: var(--gold-light); transform: scale(1.08); }
+
+  #chat-toggle {
+    width: 58px; height: 58px;
+    background: var(--charcoal);
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  #chat-toggle:hover { transform: scale(1.08); box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
+  #chat-toggle .notif {
+    position: absolute;
+    top: -3px; right: -3px;
+    width: 16px; height: 16px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    border: 2px solid var(--cream);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+  }
+
+  /* ── STANDALONE CHAT MODE ── */
+  #standalone-mode {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,28,26,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+  }
+  #standalone-mode.active { display: flex; }
+  #standalone-chat {
+    width: min(520px, 95vw);
+    height: min(680px, 92vh);
+    background: var(--warm-white);
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.85) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  #standalone-chat .chat-header { padding: 20px 24px; }
+  #standalone-chat .chat-messages { padding: 24px 20px; }
+  .standalone-close-btn {
+    margin: 16px 24px;
+    background: none;
+    border: 1px solid #ddd;
+    color: #888;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+  }
+  .standalone-close-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">Saveurs du Quartier</div>
-  <ul class="nav-links">
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#ambiance">Notre histoire</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+<div class="demo-badge">🎯 DÉMO — Chatbot IA pour restaurant</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
-  <div class="hero-content">
-    <div class="hero-badge">🍽️ Ouvert 7j/7 · Midi & Soir</div>
-    <h1>La cuisine <em>qui réchauffe</em></h1>
-    <p class="hero-sub">Des plats généreux, faits maison, avec des produits frais du marché. Un endroit où on mange bien, et où on revient.</p>
-    <div class="hero-cta">
-      <a href="#menu" class="btn-primary">Voir la carte</a>
-      <a href="#contact" class="btn-secondary">Nous appeler</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Découvrir</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+<!-- RESTAURANT PAGE -->
+<header>
+  <div class="logo">Le Comptoir du Soleil</div>
+  <nav>
+    <a href="#">Menu</a>
+    <a href="#">Réservation</a>
+    <a href="#">À propos</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
 
-<!-- STATS -->
-<div class="stats">
-  <div class="stat">
-    <span class="stat-num">+5 ans</span>
-    <div class="stat-label">d'expérience</div>
-  </div>
-  <div class="stat">
-    <span class="stat-num">100%</span>
-    <div class="stat-label">Fait maison</div>
-  </div>
-  <div class="stat">
-    <span class="stat-num">4.9 ⭐</span>
-    <div class="stat-label">Avis Google</div>
+<div class="hero">
+  <div class="hero-tag">🌿 Cuisine du Sud</div>
+  <h1>Une table où le<br><em>soleil</em> s'attarde</h1>
+  <p>Saveurs méditerranéennes, produits locaux et atmosphère chaleureuse au cœur de Lyon. Ouvert 7j/7 midi et soir.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">Réserver une table</button>
+    <button class="btn-ghost" onclick="openStandalone()">💬 Tester le chatbot en grand</button>
   </div>
 </div>
 
-<!-- MENU -->
-<section class="section" id="menu">
-  <div class="section-label">Notre carte</div>
-  <h2 class="section-title">Ce qui sort<br>de notre cuisine</h2>
-  <p class="section-sub">Plats du jour, spécialités maison et formules à petit prix. Tout est préparé sur place, chaque matin.</p>
+<div class="info-bar">
+  <div class="info-item"><span>🕐</span> Lun–Ven : 12h–14h30 & 19h–22h30</div>
+  <div class="info-item"><span>📍</span> 14 rue de la République, Lyon 2e</div>
+  <div class="info-item"><span>📞</span> 04 78 XX XX XX</div>
+  <div class="info-item"><span>🅿️</span> Parking Bellecour à 200m</div>
+</div>
+
+<div class="section">
+  <div class="section-tag">Notre carte</div>
+  <h2>Quelques incontournables</h2>
   <div class="menu-grid">
     <div class="menu-card">
-      <span class="menu-emoji">🥩</span>
-      <div class="menu-name">Assiette du Boucher</div>
-      <div class="menu-desc">Viande grillée, frites maison, sauce secrète de la maison. Le plat signature.</div>
-      <div class="menu-price">12,90 €</div>
+      <div class="category">Entrée</div>
+      <h3>Burrata aux figues rôties</h3>
+      <p>Burrata crémeuse, figues caramélisées au miel de thym, roquette et huile d'olive de Provence.</p>
+      <div class="price">14€</div>
     </div>
     <div class="menu-card">
-      <span class="menu-emoji">🫕</span>
-      <div class="menu-name">Tajine du Jour</div>
-      <div class="menu-desc">Mijoté 3h, servi avec pain maison. Recette transmise de génération en génération.</div>
-      <div class="menu-price">11,50 €</div>
+      <div class="category">Plat</div>
+      <h3>Daurade en croûte de sel</h3>
+      <p>Daurade royale entière, croûte de sel aux herbes, légumes rôtis et beurre citronné.</p>
+      <div class="price">28€</div>
     </div>
     <div class="menu-card">
-      <span class="menu-emoji">🥙</span>
-      <div class="menu-name">Sandwich Maison</div>
-      <div class="menu-desc">Pain frais du boulanger, garniture généreuse, sauce blanche ou harissa. Idéal pour le midi.</div>
-      <div class="menu-price">6,00 €</div>
+      <div class="category">Plat</div>
+      <h3>Risotto aux cèpes & truffe</h3>
+      <p>Risotto carnaroli crémeux, cèpes de saison, copeaux de truffe noire et parmesan affiné.</p>
+      <div class="price">24€</div>
     </div>
     <div class="menu-card">
-      <span class="menu-emoji">🍗</span>
-      <div class="menu-name">Poulet Rôti</div>
-      <div class="menu-desc">Poulet entier mariné 24h, cuit au four à la broche. Accompagné de sa salade.</div>
-      <div class="menu-price">13,90 €</div>
-    </div>
-    <div class="menu-card">
-      <span class="menu-emoji">🥗</span>
-      <div class="menu-name">Formule Midi</div>
-      <div class="menu-desc">Plat du jour + boisson + dessert. Renouvelée chaque matin selon le marché.</div>
-      <div class="menu-price">9,90 €</div>
-    </div>
-    <div class="menu-card">
-      <span class="menu-emoji">🍮</span>
-      <div class="menu-name">Desserts Maison</div>
-      <div class="menu-desc">Tiramisu, crème caramel, cornes de gazelle. Faits avec amour chaque matin.</div>
-      <div class="menu-price">3,50 €</div>
+      <div class="category">Dessert</div>
+      <h3>Tarte Tatin revisitée</h3>
+      <p>Pommes caramélisées, pâte feuilletée inversée, glace vanille Bourbon et caramel beurre salé.</p>
+      <div class="price">10€</div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- AMBIANCE -->
-<section class="ambiance-section" id="ambiance">
-  <div class="ambiance-inner">
-    <div>
-      <div class="section-label">Notre histoire</div>
-      <h2 class="section-title">Un resto de quartier, <em style="font-style:italic;color:var(--gold)">pas un fast-food</em></h2>
-      <p class="section-sub">On cuisine comme à la maison. Des produits frais, des recettes simples, une équipe qui vous connaît par votre prénom.</p>
-      <div class="ambiance-features">
-        <div class="feature">
-          <div class="feature-icon">🥬</div>
-          <div>
-            <div class="feature-title">Produits frais du marché</div>
-            <div class="feature-desc">On s'approvisionne chaque matin au marché local. Rien de surgelé.</div>
-          </div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🕌</div>
-          <div>
-            <div class="feature-title">100% Halal certifié</div>
-            <div class="feature-desc">Toutes nos viandes sont halal et traçables. Mangez en confiance.</div>
-          </div>
-        </div>
-        <div class="feature">
-          <div class="feature-icon">🛵</div>
-          <div>
-            <div class="feature-title">Livraison & Click & Collect</div>
-            <div class="feature-desc">Commandez en ligne, récupérez sur place ou faites-vous livrer.</div>
-          </div>
-        </div>
+<footer>© 2025 Le Comptoir du Soleil — Restaurant gastronomique Lyon — Tous droits réservés</footer>
+
+<!-- WIDGET CHAT -->
+<div id="chat-widget">
+  <div id="chat-box">
+    <div class="chat-header">
+      <div class="chat-avatar">🍽️</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Assistant du Comptoir</div>
+        <div class="chat-header-status"><div class="dot-online"></div> En ligne</div>
+      </div>
+      <button class="chat-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="widget-messages"></div>
+    <div class="quick-replies" id="widget-quick">
+      <button class="quick-reply" onclick="sendQuick('widget', 'Horaires ?')">🕐 Horaires</button>
+      <button class="quick-reply" onclick="sendQuick('widget', 'Réserver une table')">📅 Réserver</button>
+      <button class="quick-reply" onclick="sendQuick('widget', 'Menu du jour ?')">🍽️ Menu</button>
+      <button class="quick-reply" onclick="sendQuick('widget', 'Options végétariennes ?')">🌿 Végétarien</button>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter') sendMessage('widget')">
+      <button id="chat-send" onclick="sendMessage('widget')">➤</button>
+    </div>
+  </div>
+  <button id="chat-toggle" onclick="toggleChat()">
+    🍽️
+    <div class="notif" id="toggle-notif"></div>
+  </button>
+</div>
+
+<!-- STANDALONE MODE -->
+<div id="standalone-mode">
+  <div id="standalone-chat">
+    <div class="chat-header">
+      <div class="chat-avatar">🍽️</div>
+      <div class="chat-header-info">
+        <div class="chat-header-name">Assistant du Comptoir du Soleil</div>
+        <div class="chat-header-status"><div class="dot-online"></div> En ligne — propulsé par IA</div>
       </div>
     </div>
-    <div class="ambiance-visual">🍽️</div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div class="section-label">Nous trouver</div>
-    <h2 class="section-title">Venez nous rendre visite</h2>
-    <div class="contact-info">
-      <div class="contact-item">
-        <span>📍</span>
-        <span>12 rue du Marché, 75011 Paris</span>
-      </div>
-      <div class="contact-item">
-        <span>📞</span>
-        <span>01 23 45 67 89</span>
-      </div>
-      <div class="contact-item">
-        <span>🕐</span>
-        <span>Lun–Sam : 11h–22h · Dim : 12h–20h</span>
-      </div>
+    <div class="chat-messages" id="standalone-messages"></div>
+    <div class="quick-replies" id="standalone-quick">
+      <button class="quick-reply" onclick="sendQuick('standalone', 'Horaires ?')">🕐 Horaires</button>
+      <button class="quick-reply" onclick="sendQuick('standalone', 'Réserver une table')">📅 Réserver</button>
+      <button class="quick-reply" onclick="sendQuick('standalone', 'Menu du jour ?')">🍽️ Menu</button>
+      <button class="quick-reply" onclick="sendQuick('standalone', 'Livrez-vous ?')">🛵 Livraison</button>
+      <button class="quick-reply" onclick="sendQuick('standalone', 'Parking disponible ?')">🅿️ Parking</button>
     </div>
-    <a href="tel:0123456789" class="btn-primary">Appeler maintenant</a>
+    <div class="chat-input-area">
+      <input type="text" id="standalone-input" placeholder="Posez votre question…" onkeydown="if(event.key==='Enter') sendMessage('standalone')">
+      <button id="chat-send" onclick="sendMessage('standalone')" style="width:38px;height:38px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--charcoal);font-size:1rem;flex-shrink:0;">➤</button>
+    </div>
+    <button class="standalone-close-btn" onclick="closeStandalone()">✕ Fermer la démo</button>
   </div>
-</section>
-
-<footer>
-  <span>© 2026 Saveurs du Quartier</span>
-  <span>Site réalisé par Abdoul Dev</span>
-</footer>
+</div>
 
 <script>
-  // Scroll animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 100);
-      }
-    });
-  }, { threshold: 0.15 });
+const SYSTEM_PROMPT = `Tu es l'assistant virtuel du restaurant "Le Comptoir du Soleil", un restaurant gastronomique méditerranéen situé au 14 rue de la République, Lyon 2e.
 
-  document.querySelectorAll('.stat, .menu-card, .feature').forEach(el => observer.observe(el));
+Informations du restaurant :
+- Horaires : tous les jours 11h–14h le midi, et 18h30–minuit le soir
+- Viande : 100% halal, certifiée AVS (Halal Certification Authority). Si un client a un doute, lui dire qu'il peut demander la certification à l'arrivée sur place
+- Alcool : aucun alcool servi, le restaurant est 100% sans alcool
+- Poisson : oui, nous servons aussi du poisson
+- Desserts : tous frais, faits maison
+- Animaux : chiens non acceptés
+- Bébés : rehausseurs bébé disponibles sur demande
+- Téléphone : 04 78 XX XX XX
+- Réservation : par téléphone ou sur place
 
-  // Smooth nav highlight
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(link.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+Réponds toujours en français, de façon chaleureuse, concise et professionnelle. Maximum 3 phrases par réponse. Si tu ne sais pas quelque chose, invite à appeler le restaurant.`;
+
+let widgetHistory = [];
+let standaloneHistory = [];
+let widgetReady = false;
+let standaloneReady = false;
+
+function toggleChat() {
+  const box = document.getElementById('chat-box');
+  const notif = document.getElementById('toggle-notif');
+  const isOpen = box.classList.toggle('open');
+  notif.style.display = 'none';
+  if (isOpen && !widgetReady) {
+    widgetReady = true;
+    addMessage('widget', 'bot', "Bonjour ! 👋 Bienvenue au Comptoir du Soleil. Comment puis-je vous aider ?");
+  }
+}
+
+function openStandalone() {
+  document.getElementById('standalone-mode').classList.add('active');
+  if (!standaloneReady) {
+    standaloneReady = true;
+    addMessage('standalone', 'bot', "Bonjour et bienvenue ! 🌿 Je suis l'assistant du Comptoir du Soleil. Réservation, horaires, menu… je suis là pour vous aider !");
+  }
+}
+
+function closeStandalone() {
+  document.getElementById('standalone-mode').classList.remove('active');
+}
+
+function addMessage(mode, role, text) {
+  const container = document.getElementById(mode === 'widget' ? 'widget-messages' : 'standalone-messages');
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.innerHTML = `
+    <div class="msg-avatar">${role === 'bot' ? '🍽️' : 'Vous'[0]}</div>
+    <div class="msg-bubble">${text}</div>
+  `;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function showTyping(mode) {
+  const container = document.getElementById(mode === 'widget' ? 'widget-messages' : 'standalone-messages');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.id = `typing-${mode}`;
+  div.innerHTML = `<div class="msg-avatar">🍽️</div><div class="typing-indicator"><span></span><span></span><span></span></div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function hideTyping(mode) {
+  const el = document.getElementById(`typing-${mode}`);
+  if (el) el.remove();
+}
+
+async function askClaude(mode, userText) {
+  const history = mode === 'widget' ? widgetHistory : standaloneHistory;
+  history.push({ role: 'user', content: userText });
+
+  showTyping(mode);
+
+  try {
+    const response = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: SYSTEM_PROMPT,
+        messages: history
+      })
     });
-  });
+
+    const data = await response.json();
+    const reply = data.content?.[0]?.text || "Je suis désolé, je n'ai pas pu traiter votre demande.";
+    history.push({ role: 'assistant', content: reply });
+    hideTyping(mode);
+    addMessage(mode, 'bot', reply);
+  } catch (e) {
+    hideTyping(mode);
+    addMessage(mode, 'bot', "Une erreur est survenue. Veuillez réessayer ou appeler le 04 78 XX XX XX.");
+  }
+}
+
+function sendMessage(mode) {
+  const inputId = mode === 'widget' ? 'chat-input' : 'standalone-input';
+  const input = document.getElementById(inputId);
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  addMessage(mode, 'user', text);
+  // Hide quick replies after first message
+  const quickId = mode === 'widget' ? 'widget-quick' : 'standalone-quick';
+  document.getElementById(quickId).style.display = 'none';
+  askClaude(mode, text);
+}
+
+function sendQuick(mode, text) {
+  const quickId = mode === 'widget' ? 'widget-quick' : 'standalone-quick';
+  document.getElementById(quickId).style.display = 'none';
+  addMessage(mode, 'user', text);
+  askClaude(mode, text);
+}
+
+// Close standalone on backdrop click
+document.getElementById('standalone-mode').addEventListener('click', function(e) {
+  if (e.target === this) closeStandalone();
+});
+
+// Show notif on toggle button after 3s
+setTimeout(() => {
+  const notif = document.getElementById('toggle-notif');
+  const box = document.getElementById('chat-box');
+  if (!box.classList.contains('open')) notif.style.display = 'block';
+}, 3000);
 </script>
 </body>
 </html>
-
