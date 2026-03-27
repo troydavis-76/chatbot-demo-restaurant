@@ -667,8 +667,9 @@ async function askClaude(mode, userText) {
       })
     });
 
-    const data = await response.json();
-    const reply = data.content?.[0]?.text || "Je suis désolé, je n'ai pas pu traiter votre demande.";
+   const data = await response.json();
+console.log('Réponse API:', JSON.stringify(data));
+const reply = data.content?.[0]?.text || "Je suis désolé, je n'ai pas pu traiter votre demande.";
     history.push({ role: 'assistant', content: reply });
     hideTyping(mode);
     addMessage(mode, 'bot', reply);
